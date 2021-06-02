@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+  <meta charset="UTF-8">
+  <title>js課題3</title>
+</head>
+
+<body>
+
+
+  <h1>ToDoリスト</h1>
+  <p>
+    <input type="radio" name="list" value="all">すべて
+    <input type="radio" name="list" value="work">作業中
+    <input type="radio" name="list" value="done">完了
+  </p>
+
+  <table>
+    <thead>
+      <th>ID</th>
+      <th>コメント</th>
+      <th>状態</th>
+      <th></th>
+    </thead>
+    <tbody id="todo-body">
+    </tbody>
+  </table>
+
+
+  <h2>新規タスクの追加</h2>
+  <input id="text" type="text">
+  <button id='btn'>追加</button>
+
+  <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
