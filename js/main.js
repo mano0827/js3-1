@@ -35,7 +35,7 @@
       tableRecord.appendChild(action);
       
       status.appendChild(createStatusButton());
-      action.appendChild(createRemoveButton());
+      action.appendChild(createRemoveButton(tableRecord));
     });
   };
   
@@ -44,9 +44,18 @@
     statusBtn.textContent = '作業中'
     return statusBtn;
   };
-  createRemoveButton = () => {
+  createRemoveButton = (tableRecord) => {
+    const number = tableRecord.roeIndex-1;
     const removeBtn = document.createElement('button');
     removeBtn.textContent = '削除'
+
+    removeBtn.addEventListener('click',() => {
+      todos.splice(number,1);
+      showTodos();
+    })
+
     return removeBtn;
+    
+
   };
 }
