@@ -3,7 +3,6 @@
 {
   const tableBody = document.getElementById('todo-body')
   const text = document.getElementById('text');
-  const btn = document.getElementById('btn');
   const todos = [];
 
   document.querySelector('button').addEventListener('click', () => {
@@ -24,19 +23,19 @@
       const tableRecord = document.createElement('tr');
       tableBody.appendChild(tableRecord);
       const tableId = document.createElement('td');
-      const Comment = document.createElement('td');
-      const Status = document.createElement('td');
-      const Action = document.createElement('td');
+      const comment = document.createElement('td');
+      const status = document.createElement('td');
+      const action = document.createElement('td');
       
       tableId.textContent = number;
-      Comment.textContent = todo.tableComment;
+      comment.textContent = todo.tableComment;
       tableRecord.appendChild(tableId);
-      tableRecord.appendChild(Comment);
-      tableRecord.appendChild(Status);
-      tableRecord.appendChild(Action);
+      tableRecord.appendChild(comment);
+      tableRecord.appendChild(status);
+      tableRecord.appendChild(action);
       
-      Status.appendChild(createStatusButton());
-      Action.appendChild(createRemoveButton());
+      status.appendChild(createStatusButton());
+      action.appendChild(createRemoveButton());
     });
   };
   
