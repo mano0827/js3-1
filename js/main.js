@@ -16,7 +16,7 @@
       showTodos();
     }
   });
-  
+
   const showTodos = () => {
     tableBody.textContent = '';
     todos.forEach((todo, number) => {
@@ -26,36 +26,43 @@
       const comment = document.createElement('td');
       const status = document.createElement('td');
       const action = document.createElement('td');
-      
+
       tableId.textContent = number;
       comment.textContent = todo.tableComment;
       tableRecord.appendChild(tableId);
       tableRecord.appendChild(comment);
       tableRecord.appendChild(status);
       tableRecord.appendChild(action);
-      
+
       status.appendChild(createStatusButton());
       action.appendChild(createRemoveButton(tableRecord));
     });
   };
-  
+
   createStatusButton = () => {
     const statusBtn = document.createElement('button')
     statusBtn.textContent = '作業中'
+
+    statusBtn.addEventListener('click', () => {
+      if (statusBtn.textContent === '作業中') {
+        statusBtn.textContent = '完了'
+      } else {
+        statusBtn.textContent = '作業中'
+      }
+    });
     return statusBtn;
   };
+
   createRemoveButton = (tableRecord) => {
-    const number = tableRecord.roeIndex-1;
+    const number = tableRecord.rowIndex - 1;
     const removeBtn = document.createElement('button');
     removeBtn.textContent = '削除'
 
-    removeBtn.addEventListener('click',() => {
-      todos.splice(number,1);
+    removeBtn.addEventListener('click', () => {
+      todos.splice(number, 1);
       showTodos();
     })
 
     return removeBtn;
-    
-
   };
 }
