@@ -35,9 +35,8 @@
       })
 
       return removeBtn;
-
     };
-    
+
     if (todo) {
       todos.push(todo);
       text.value = '';
@@ -63,10 +62,34 @@
       tableRecord.appendChild(status);
       status.appendChild(work);
       tableRecord.appendChild(action);
-
       action.appendChild(createRemoveButton(tableRecord));
     });
   };
 
+
+  const radioAll = document.getElementById('radioAll');
+  const radioWork = document.getElementById('radioWork');
+  const radioDone = document.getElementById('radioDone');
+  
+  function change() {
+    if (radioAll.checked) {
+      return showTodos(todos);
+    } else if (radioWork.checked) {
+      const todoWork = todos.filter((todo) => {
+        return todo.tableStatus === '作業中'
+      })
+      return showTodos(todoWork);
+    } else if (radioDone.checked) {
+      const todoDone = todos.filter((todo) => {
+        return todo.tableStatus === '完了'
+      })
+      return showTodos(todoDone);
+    }
+    
+    const list = document.getElementsByName('input')
+    list.addEventListener('click',() => {
+    change();
+    })
+  };
 }
 

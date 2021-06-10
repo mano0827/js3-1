@@ -10,10 +10,10 @@
 
 
   <h1>ToDoリスト</h1>
-  <p>
-    <input type="radio" name="list" value="all">すべて
-    <input type="radio" name="list" value="work">作業中
-    <input type="radio" name="list" value="done">完了
+  <p id='radioForm'> 
+    <input type="radio" name="list" value="all" id="radioAll" onchange="change()">すべて
+    <input type="radio" name="list" value="work" id="radioWork" onchange="change()">作業中
+    <input type="radio" name="list" value="done" id="radioDone" onchange="change()">完了
   </p>
 
   <table>
