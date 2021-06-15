@@ -40,13 +40,15 @@
     if (todo) {
       todos.push(todo);
       text.value = '';
-      showTodos();
+      showTodos(todos);
     }
   });
 
-  const showTodos = () => {
+
+
+  const showTodos = (argTodos) => {
     tableBody.textContent = '';
-    todos.forEach((todo, number) => {
+    argTodos.forEach((todo, number) => {
       const tableRecord = document.createElement('tr');
       tableBody.appendChild(tableRecord);
       const tableId = document.createElement('td');
@@ -63,33 +65,31 @@
       status.appendChild(work);
       tableRecord.appendChild(action);
       action.appendChild(createRemoveButton(tableRecord));
+
     });
   };
 
 
-  const radioAll = document.getElementById('radioAll');
-  const radioWork = document.getElementById('radioWork');
-  const radioDone = document.getElementById('radioDone');
-  
-  function change() {
+  function changeg() {
+    const radioAll = document.getElementById('radioAll');
+    const radioWork = document.getElementById('radioWork');
+    const radioDone = document.getElementById('radioDone');
+
     if (radioAll.checked) {
       return showTodos(todos);
     } else if (radioWork.checked) {
       const todoWork = todos.filter((todo) => {
-        return todo.tableStatus === '作業中'
+        return todo.tableStatus === '完了'
       })
       return showTodos(todoWork);
     } else if (radioDone.checked) {
       const todoDone = todos.filter((todo) => {
-        return todo.tableStatus === '完了'
+        return todo.tableStatus === '作業中'
       })
       return showTodos(todoDone);
     }
-    
-    const list = document.getElementsByName('input')
-    list.addEventListener('click',() => {
-    change();
-    })
-  };
+  }
+
+
 }
 
