@@ -8,10 +8,14 @@
 
   document.querySelector('button').addEventListener('click', () => {
     const workBtn = document.createElement('button');
+    const tableIds = todos.length;
     workBtn.textContent = '作業中'
     const todo = {};
+    todo.taskId = tableIds;
     todo.tableComment = text.value;
     todo.tableStatus = workBtn;
+    change();
+
 
 
     workBtn.addEventListener('click', () => {
@@ -70,7 +74,7 @@
   };
 
 
-  function changeg() {
+  function change() {
     const radioAll = document.getElementById('radioAll');
     const radioWork = document.getElementById('radioWork');
     const radioDone = document.getElementById('radioDone');
@@ -79,12 +83,12 @@
       return showTodos(todos);
     } else if (radioWork.checked) {
       const todoWork = todos.filter((todo) => {
-        return todo.tableStatus === '完了'
+        return todo.tableStatus.textContent === '作業中'
       })
       return showTodos(todoWork);
     } else if (radioDone.checked) {
       const todoDone = todos.filter((todo) => {
-        return todo.tableStatus === '作業中'
+        return todo.tableStatus.textContent === '完了'
       })
       return showTodos(todoDone);
     }
