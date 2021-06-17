@@ -5,8 +5,9 @@
   const text = document.getElementById('text');
   const todos = [];
 
-
-  document.querySelector('button').addEventListener('click', () => {
+  
+  document.querySelector('button').addEventListener('click',() => {
+   
     const workBtn = document.createElement('button');
     const tableIds = todos.length;
     workBtn.textContent = '作業中'
@@ -14,7 +15,6 @@
     todo.taskId = tableIds;
     todo.tableComment = text.value;
     todo.tableStatus = workBtn;
-    change();
 
 
 
@@ -26,25 +26,25 @@
       };
       return workBtn;
     })
-
-
+    
     createRemoveButton = (tableRecord) => {
       const number = tableRecord.rowIndex - 1;
       const removeBtn = document.createElement('button');
       removeBtn.textContent = '削除'
-
+      
       removeBtn.addEventListener('click', () => {
         todos.splice(number, 1);
-        showTodos();
+        showTodos(todos);
       })
-
+      
       return removeBtn;
     };
-
+    
     if (todo) {
       todos.push(todo);
       text.value = '';
       showTodos(todos);
+      change();
     }
   });
 
@@ -52,15 +52,14 @@
 
   const showTodos = (argTodos) => {
     tableBody.textContent = '';
-    argTodos.forEach((todo, number) => {
+    argTodos.forEach((todo, length) => {
       const tableRecord = document.createElement('tr');
       tableBody.appendChild(tableRecord);
       const tableId = document.createElement('td');
       const comment = document.createElement('td');
       const status = document.createElement('td');
       const action = document.createElement('td');
-
-      tableId.textContent = number;
+      tableId.textContent = length;
       comment.textContent = todo.tableComment;
       const work = todo.tableStatus
       tableRecord.appendChild(tableId);
